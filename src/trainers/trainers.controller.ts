@@ -1,14 +1,14 @@
 // src/trainers/trainer.controller.ts
 import { Controller, Get, Param, NotFoundException } from '@nestjs/common';
-import { TrainerService } from './trainers.service';
+import { TrainersService } from './trainers.service';
 import { Trainer } from './trainers.entity';
 
 @Controller('trainers')
-export class TrainerController {
-  constructor(private readonly trainerService: TrainerService) {}
+export class TrainersController {
+  constructor(private readonly trainerService: TrainersService) {}
 
   @Get()
-  async getAllTrainers(): Promise<Trainer[]> {
+  async getAllTrainers(): Promise<Trainer[] | null> {
     return this.trainerService.getAllTrainers();
   }
 
