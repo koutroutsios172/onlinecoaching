@@ -1,14 +1,16 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+// src/trainers/schemas/trainer.schema.ts
 
-export type TrainerDocument = HydratedDocument<Trainer>;
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
+
+export type TrainerDocument = Trainer & Document;
 
 @Schema()
 export class Trainer {
-  @Prop()
+  @Prop({ required: true })
   name: string;
 
-  @Prop()
+  @Prop({ required: true })
   age: number;
 
   @Prop()
@@ -16,3 +18,4 @@ export class Trainer {
 }
 
 export const TrainerSchema = SchemaFactory.createForClass(Trainer);
+
